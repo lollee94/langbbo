@@ -1,3 +1,3 @@
 # langbbo
 ### 외국어 학습앱 프로토타입
-![langbbo_1](https://user-images.githubusercontent.com/88628772/132992703-51a198c4-a941-4c71-9749-179aad7be6a1.jpg)
+![langbbo1](https://user-images.githubusercontent.com/88628772/132992732-5fd75103-04cf-4422-b514-d1c19de29ee6.PNG)
