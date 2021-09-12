@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/study_root_lo"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/study_contentLack_lo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="#ffffff"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="학습하기 위해서는\n최소 2개 이상의 자료가 필요합니다."
+            android:textSize="20dp"
+            android:textColor="#80000000" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/study_loading_lo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="#ffffff"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="학습 자료 준비 중..."
+            android:textSize="20dp"
+            android:textColor="#80000000" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/study_black_lo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:clickable="true"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/study_black_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="자유롭게 말해보세요!"
+            android:textColor="#ffffff"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_marginTop="150dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            android:text="화면 눌러서 취소하기"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/study_main_lo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/study_situation_lo"
+        android:layout_below="@id/study_help_lo"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:padding="35dp">
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/study_upper_lo"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:gravity="right">
+
+        <LinearLayout
+            android:id="@+id/study_stt_lo"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentLeft="true"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_speak"/>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/study_hint_lo"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_alignParentRight="true"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/study_hint_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="#000000"
+                android:textSize="24dp"
+                />
+
+            <ImageView
+                android:visibility="gone"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_hint" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_above="@id/study_skip_lo"
+        android:id="@+id/study_situation_lo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/study_situation_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="35dp"
+            android:paddingRight="35dp"
+            android:paddingTop="25dp"
+            android:paddingBottom="25dp"
+            android:textSize="16dp"
+            android:textColor="#808080"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:id="@+id/study_skip_lo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right">
+
+        <TextView
+            android:id="@+id/study_skip_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="스킵하기 > "
+            android:textSize="18dp"
+            android:textColor="#808080"/>
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/study_timer_lo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/study_listening_lo"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_timer"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:padding="1dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/study_timerSec_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="0"
+                android:textColor="#000000"
+                android:textSize="30dp" />
+
+            <TextView
+                android:id="@+id/study_timerMilli_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:textStyle="bold"
+                android:text=".00"
+                android:textColor="#000000"
+                android:textSize="15dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/study_help_lo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_below="@id/study_timer_lo"
+        android:paddingStart="35dp"
+        android:paddingEnd="35dp"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/study_help_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#50000000"
+            android:textSize="22dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/study_listening_lo"
+        android:layout_below="@id/study_fail_lo"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="15dp"
+        android:paddingStart="25dp"
+        android:paddingEnd="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/study_audio_tv"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_margin="8dp"
+            android:textColor="#ffffff"
+            android:textSize="16dp"/>
+
+
+        <TextView
+            android:id="@+id/study_tts_tv"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="@drawable/ripple_green"
+            android:layout_margin="8dp"
+            android:textColor="#ffffff"
+            android:textSize="16dp"
+            android:text="TTS 듣기"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:background="#81c147"
+        android:layout_below="@id/study_upper_lo"
+        android:id="@+id/study_success_lo"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/study_again_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textColor="#ffffff"
+            android:textSize="18dp"
+            android:text="성공! 한번 더 연습"
+            android:layout_alignParentLeft="true"
+            />
+
+
+        <TextView
+            android:id="@+id/study_next_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textColor="#ffffff"
+            android:textSize="18dp"
+            android:text="다음 문장으로 이동"
+            android:layout_alignParentRight="true"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:background="#ff3300"
+        android:layout_below="@id/study_success_lo"
+        android:id="@+id/study_fail_lo"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/study_fail_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textColor="#ffffff"
+            android:textSize="18dp"
+            android:text=""
+            android:layout_alignParentLeft="true"
+            />
+    </RelativeLayout>
+
+</RelativeLayout>

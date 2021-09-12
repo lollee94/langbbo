@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">랭뽀</string>
+    <string name="back">뒤로가기</string>
+    <string name="kakao_app_key">45e63b058f5758a35a96ef06610df650</string>
+</resources>

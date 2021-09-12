@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="45dp"
+    android:paddingRight="45dp"
+    android:gravity="center"
+    android:background="#80000000"
+    android:orientation="vertical">
+
+    <!--
+    <LinearLayout
+        android:id="@+id/login_black_lo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:clickable="true"
+        android:visibility="gone"
+        android:orientation="vertical">
+    </LinearLayout>
+    -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:gravity="center"
+        android:text="간단하게 로그인하고\n서비스 이용하기"
+        android:textColor="#ffffff"
+        android:textSize="30dp" />
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/login_kakao_lo"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/border_rounded_kakao"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/kakao_ic"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="카카오톡으로 가입하기"
+            android:textColor="#000000"
+            android:textSize="17dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/login_email_lo"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/border_rounded_email"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이메일로 로그인하기"
+            android:textColor="#0d47a1"
+            android:textSize="17dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/login_signup_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:layout_marginTop = "20dp"
+        android:gravity="center"
+        android:text="회원가입하기"
+        android:textColor="#ffffff"
+        android:textSize="16dp" />
+
+
+</LinearLayout>

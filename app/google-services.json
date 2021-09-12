@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "700997512250",
+    "project_id": "langbbo-b6be2",
+    "storage_bucket": "langbbo-b6be2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:700997512250:android:77fd36c1f240688af0d903",
+        "android_client_info": {
+          "package_name": "com.example.langbbo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "700997512250-i4l5m9l94mif9fnamgnqpsmgbgjci7q7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9SZfN9Rnrh8F_lEujyjtYMP_At12QYtk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "700997512250-i4l5m9l94mif9fnamgnqpsmgbgjci7q7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
