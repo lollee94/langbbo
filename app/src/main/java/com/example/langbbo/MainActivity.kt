@@ -9,11 +9,13 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
@@ -26,6 +28,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.activity_main.*
+import java.lang.Exception
 
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
@@ -35,8 +38,11 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     var firestore: FirebaseFirestore? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        controlSplash(true)
 
         initFirebase() // 푸시 토큰 받아오기
 
@@ -257,6 +263,28 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                 }
 
             }
+    }
+
+    fun controlSplash(switch: Boolean){
+
+        if(switch){
+            window.statusBarColor = resources.getColor(R.color.colorMain)
+            window.navigationBarColor = resources.getColor(R.color.colorMain)
+            main_fl.visibility = View.INVISIBLE
+            main_bn.visibility = View.INVISIBLE
+
+            main_splash_lo.visibility = View.VISIBLE
+            main_splash_lo.bringToFront()
+        }
+        else {
+            window.statusBarColor = resources.getColor(R.color.colorPrimaryDark)
+            window.navigationBarColor = resources.getColor(R.color.colorPrimaryDark)
+            main_splash_lo.visibility = View.GONE
+
+            main_fl.visibility = View.VISIBLE
+            main_bn.visibility = View.VISIBLE
+        }
+
     }
     
 }

@@ -113,8 +113,8 @@ class StudyActivity : AppCompatActivity() {
         firestore?.collection(Utils.userInfo)?.document(uid)
                 ?.collection(Utils.langInfo)?.document(lang)
                 ?.collection(Utils.studyInfo)
-                ?.orderBy(idx, Query.Direction.ASCENDING)?.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
-
+                ?.orderBy(idx, Query.Direction.ASCENDING)
+                ?.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
                     sData.clear()
 
                     // 학습 끝나고 새 학습이 나올 때 사라지도록 설정해놓는 것
@@ -131,6 +131,7 @@ class StudyActivity : AppCompatActivity() {
                             if(sItem.catData[category] == true) {
                                 sData.add(sItem)
                             }
+
                         }
 
                     }

@@ -78,8 +78,8 @@ class StorageFragment: Fragment() {
             startActivity(intent)
         }
 
-        firestore?.collection(Utils.userInfo)?.document(uid)?.addSnapshotListener {
-            documentSnapshot, firebaseFirestoreException ->
+        firestore?.collection(Utils.userInfo)?.document(uid)?.get()?.addOnSuccessListener {
+            documentSnapshot ->
 
             if (documentSnapshot != null) {
                 var uItem = documentSnapshot.toObject(UserDTO::class.java)!!
@@ -96,8 +96,8 @@ class StorageFragment: Fragment() {
 
                 firestore?.collection(Utils.userInfo)?.document(uid)
                         ?.collection(Utils.langInfo)?.document(lang)
-                        ?.collection(Utils.studyInfo)
-                        ?.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
+                        ?.collection(Utils.studyInfo)?.get()?.addOnSuccessListener {
+                         querySnapshot ->
 
                             var readingStoreNum = 0
                             var listeningStoreNum = 0
@@ -130,8 +130,8 @@ class StorageFragment: Fragment() {
 
                 firestore?.collection(Utils.userInfo)?.document(uid)
                         ?.collection(Utils.langInfo)?.document(lang)
-                        ?.collection(Utils.completeInfo)
-                        ?.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
+                        ?.collection(Utils.completeInfo)?.get()?.addOnSuccessListener {
+                            querySnapshot ->
 
                             var readingStudyNum = 0
                             var listeningStudyNum = 0
@@ -188,6 +188,7 @@ class StorageFragment: Fragment() {
                             fView!!.word_study_tv.text = "학습 횟수 $wordStudyNum"
 
 
+                            (activity as MainActivity).controlSplash(false)
                         }
 
             }
