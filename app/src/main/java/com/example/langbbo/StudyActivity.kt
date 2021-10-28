@@ -420,7 +420,7 @@ class StudyActivity : AppCompatActivity() {
                                     study_main_lo.addView(situationTv2)
                                     study_main_lo.addView(situationEt)
                                 }
-                                else if(category== "reading"){
+                                else if(category == "reading" || category == "word"){
                                     // 읽기
 
                                     study_success_lo.visibility = View.VISIBLE

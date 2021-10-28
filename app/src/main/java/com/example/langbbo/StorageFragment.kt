@@ -41,6 +41,8 @@ class StorageFragment: Fragment() {
 
         val lo = fView!!.storage_category_lo
         val childCount = lo.childCount
+
+        /*
         for(i in 0 until childCount){
             val childLo = lo.getChildAt(i)
             childLo.setOnClickListener {
@@ -57,8 +59,56 @@ class StorageFragment: Fragment() {
                 startActivity(intent)
             }
         }
+         */
+        fView!!.word.setOnClickListener {
+            val intent = Intent(context, StudyActivity::class.java)
+            val args = Bundle()
+            args.putString("lang", lang)
+            args.putString("category", "word")
 
+            intent.putExtras(args)
+            startActivity(intent)
+        }
 
+        fView!!.reading.setOnClickListener {
+            val intent = Intent(context, StudyActivity::class.java)
+            val args = Bundle()
+            args.putString("lang", lang)
+            args.putString("category", "reading")
+
+            intent.putExtras(args)
+            startActivity(intent)
+        }
+
+        fView!!.listening.setOnClickListener {
+            val intent = Intent(context, StudyActivity::class.java)
+            val args = Bundle()
+            args.putString("lang", lang)
+            args.putString("category", "listening")
+
+            intent.putExtras(args)
+            startActivity(intent)
+        }
+
+        fView!!.speaking.setOnClickListener {
+            val intent = Intent(context, StudyActivity::class.java)
+            val args = Bundle()
+            args.putString("lang", lang)
+            args.putString("category", "speaking")
+
+            intent.putExtras(args)
+            startActivity(intent)
+        }
+
+        fView!!.writing.setOnClickListener {
+            val intent = Intent(context, StudyActivity::class.java)
+            val args = Bundle()
+            args.putString("lang", lang)
+            args.putString("category", "writing")
+
+            intent.putExtras(args)
+            startActivity(intent)
+        }
 
         fView!!.storage_add_lo.setOnClickListener {
             val intent = Intent(context, FormActivity::class.java)
@@ -119,11 +169,11 @@ class StorageFragment: Fragment() {
                                 }
                             }
 
-                            fView!!.reading_store_tv.text = "학습 중인 표현 $readingStoreNum"
-                            fView!!.listening_store_tv.text = "학습 중인 표현 $listeningStoreNum"
-                            fView!!.speaking_store_tv.text = "학습 중인 표현 $speakingStoreNum"
-                            fView!!.writing_store_tv.text = "학습 중인 표현 $writingStoreNum"
-                            fView!!.word_store_tv.text = "학습 중인 표현 $wordStoreNum"
+                            fView!!.reading_store_tv.text = "학습 표현 $readingStoreNum"
+                            fView!!.listening_store_tv.text = "학습 표현 $listeningStoreNum"
+                            fView!!.speaking_store_tv.text = "학습 표현 $speakingStoreNum"
+                            fView!!.writing_store_tv.text = "학습 표현 $writingStoreNum"
+                            fView!!.word_store_tv.text = "학습 표현 $wordStoreNum"
 
                         }
 
@@ -174,12 +224,11 @@ class StorageFragment: Fragment() {
                                 }
                             }
 
-                            fView!!.reading_complete_tv.text = "완료한 표현 $readingCompleteNum"
-                            fView!!.listening_complete_tv.text = "완료한 표현 $listeningCompleteNum"
-                            fView!!.speaking_complete_tv.text = "완료한 표현 $speakingCompleteNum"
-                            fView!!.writing_complete_tv.text = "완료한 표현 $writingCompleteNum"
-                            fView!!.word_complete_tv.text = "완료한 표현 $wordCompleteNum"
-
+                            fView!!.reading_complete_tv.text = "완료 표현 $readingCompleteNum"
+                            fView!!.listening_complete_tv.text = "완료 표현 $listeningCompleteNum"
+                            fView!!.speaking_complete_tv.text = "완료 표현 $speakingCompleteNum"
+                            fView!!.writing_complete_tv.text = "완료 표현 $writingCompleteNum"
+                            fView!!.word_complete_tv.text = "완료 표현 $wordCompleteNum"
 
                             fView!!.reading_study_tv.text = "학습 횟수 $wordStudyNum"
                             fView!!.listening_study_tv.text = "학습 횟수 $listeningStudyNum"
@@ -243,7 +292,10 @@ class StorageFragment: Fragment() {
 
                         val uData = HashMap<String, Any?>()
                         uData["lang"] = lang
-                        firestore?.collection(Utils.userInfo)?.document(uid)?.update(uData)
+                        firestore?.collection(Utils.userInfo)?.document(uid)?.update(uData)?.addOnCompleteListener {
+
+
+                        }
 
                     }
                     setNegativeButton("취소") { dialogInterface, i -> }

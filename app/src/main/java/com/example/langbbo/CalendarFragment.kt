@@ -185,7 +185,7 @@ class CalendarFragment: Fragment() {
 
                             // data 추가하는 버튼
                             fView!!.calendar_addDate_lo.setOnClickListener {
-                                if(!isThereToday && todayRegister >= registerNum && todayStudy >= studyNum) {
+                                if(!isThereToday && (todayRegister >= registerNum || todayStudy >= studyNum)) {
                                     var sUid = uid.substring(0, 3)
                                     val timeStamp = SimpleDateFormat( "yyMMddHHmmss").format(Date())
                                     val dateId = "d_${sUid}_$timeStamp"
