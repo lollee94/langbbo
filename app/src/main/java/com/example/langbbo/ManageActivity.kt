@@ -15,6 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_manage.*
+import kotlinx.android.synthetic.main.activity_study.*
 import kotlinx.android.synthetic.main.item_manage.view.*
 
 class ManageActivity : AppCompatActivity() {
@@ -25,6 +26,7 @@ class ManageActivity : AppCompatActivity() {
     var storage: FirebaseStorage? = null
 
     var lang: String = ""
+    var category: String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +39,7 @@ class ManageActivity : AppCompatActivity() {
 
         val extras = intent.extras
         lang = extras?.getString("lang")!!
+        category = extras?.getString("category")
 
         manage_back.setOnClickListener { finish() }
         manage_rv.adapter = StudyManageRecyclerviewAdapter()
@@ -61,7 +64,14 @@ class ManageActivity : AppCompatActivity() {
                         if (querySnapshot != null) {
                             for (snapshot in querySnapshot) {
                                 var item = snapshot.toObject(StudyDTO::class.java)!!
-                                studyDTOs.add(item)
+
+                                if(category != null) {
+                                    if (item.catData[category!!] == true) {
+                                        studyDTOs.add(item)
+                                    }
+                                } else{
+                                    studyDTOs.add(item)
+                                }
                             }
                         }
                         notifyDataSetChanged()
@@ -76,7 +86,64 @@ class ManageActivity : AppCompatActivity() {
         override fun onBindViewHolder(holder: androidx.recyclerview.widget.RecyclerView.ViewHolder, position: Int) {
             val viewHolder = (holder as CustomViewHolder).itemView
 
-            viewHolder.manage_name_tv.text = studyDTOs[position].sentenceKorean
+            if(category == null){
+                viewHolder.manage_revise_tv.visibility = View.VISIBLE
+                viewHolder.manage_delete_tv.visibility = View.VISIBLE
+                viewHolder.manage_answer_tv.visibility = View.GONE
+
+                viewHolder.manage_name_tv.text = studyDTOs[position].sentenceKorean
+            }
+            else{
+                viewHolder.manage_revise_tv.visibility = View.GONE
+                viewHolder.manage_delete_tv.visibility = View.GONE
+                viewHolder.manage_answer_tv.visibility = View.VISIBLE
+
+                if(category == "word" || category == "reading") {
+                    viewHolder.manage_name_tv.text = studyDTOs[position].sentenceList[studyDTOs[position].sentenceNum - 1]
+
+                    var isAnswer = false
+                    viewHolder.manage_answer_tv.setOnClickListener {
+                        if(isAnswer){
+                            viewHolder.manage_name_tv.text = studyDTOs[position].sentenceList[studyDTOs[position].sentenceNum - 1]
+                        }
+                        else {
+                            viewHolder.manage_name_tv.text = studyDTOs[position].sentenceKorean
+                        }
+                        isAnswer = !isAnswer
+                    }
+                }
+                else{
+                    viewHolder.manage_name_tv.text = studyDTOs[position].sentenceKorean
+
+                    var isAnswer = false
+                    viewHolder.manage_answer_tv.setOnClickListener {
+                        if(isAnswer){
+                            viewHolder.manage_name_tv.text = studyDTOs[position].sentenceKorean
+                        }
+                        else {
+                            viewHolder.manage_name_tv.text = studyDTOs[position].sentenceList[studyDTOs[position].sentenceNum - 1]
+                        }
+                        isAnswer = !isAnswer
+                    }
+
+                }
+
+
+                viewHolder.manage_answer_tv.setOnLongClickListener {
+
+                    val intent = Intent(applicationContext, HintActivity::class.java)
+                    val args = Bundle()
+
+                    args.putString("studyId", studyDTOs[position].studyId)
+                    args.putString("lang", studyDTOs[position].lang)
+                    args.putString("category", category)
+                    intent.putExtras(args)
+                    startActivity(intent)
+
+                    true
+                }
+            }
+
 
             viewHolder.manage_revise_tv.setOnClickListener {
                 var intent = Intent(applicationContext, FormActivity::class.java)
@@ -97,9 +164,7 @@ class ManageActivity : AppCompatActivity() {
 
                 intent.putExtras(args)
                 startActivity(intent)
-
             }
-
 
             viewHolder.manage_delete_tv.setOnClickListener {
 

@@ -110,6 +110,67 @@ class StorageFragment: Fragment() {
             startActivity(intent)
         }
 
+        fView!!.word.setOnLongClickListener {
+            val intent = Intent(context, ManageActivity::class.java)
+            val args = Bundle()
+            args.putString("lang", lang)
+            args.putString("category", "word")
+
+            intent.putExtras(args)
+            startActivity(intent)
+
+            true
+        }
+
+        fView!!.reading.setOnLongClickListener {
+            val intent = Intent(context, ManageActivity::class.java)
+            val args = Bundle()
+            args.putString("lang", lang)
+            args.putString("category", "reading")
+
+            intent.putExtras(args)
+            startActivity(intent)
+
+            true
+        }
+
+        fView!!.listening.setOnLongClickListener {
+            val intent = Intent(context, ManageActivity::class.java)
+            val args = Bundle()
+            args.putString("lang", lang)
+            args.putString("category", "listening")
+
+            intent.putExtras(args)
+            startActivity(intent)
+
+            true
+        }
+
+        fView!!.speaking.setOnLongClickListener {
+            val intent = Intent(context, ManageActivity::class.java)
+            val args = Bundle()
+            args.putString("lang", lang)
+            args.putString("category", "speaking")
+
+            intent.putExtras(args)
+            startActivity(intent)
+
+            true
+        }
+
+        fView!!.writing.setOnLongClickListener {
+            val intent = Intent(context, ManageActivity::class.java)
+            val args = Bundle()
+            args.putString("lang", lang)
+            args.putString("category", "writing")
+
+            intent.putExtras(args)
+            startActivity(intent)
+
+            true
+        }
+
+
         fView!!.storage_add_lo.setOnClickListener {
             val intent = Intent(context, FormActivity::class.java)
             val args = Bundle()
